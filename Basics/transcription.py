@@ -1,5 +1,4 @@
-# Central Dogma code
-# Sarvesh Menon
+# code for DNA -> RNA transcription
 
 def transcription(seq, coding_strand=True):
 	seq = seq.upper()
