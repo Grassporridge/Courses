@@ -1,4 +1,6 @@
 # code for DNA -> RNA transcription
+# Accepts coding strand and template strand
+# (str) -> (str)
 
 def transcription(seq, coding_strand=True):
 	seq = seq.upper()
@@ -22,15 +24,13 @@ def transcription(seq, coding_strand=True):
 DNA = 'ATGCATgtca\n agtctagc'
 RNA = transcription(DNA)
 EXP_OP = 'AUGCAUGUCAAGUCUAGC'
-if RNA == EXP_OP:
-	print('Test works')
+assert RNA == EXP_OP, "base case doesn't work"
 
 #test case 2
 DNA = 'ATGCATgtca\n agtctagc'
 RNA = transcription(DNA, coding_strand=False)
 EXP_OP = 'UACGUACAGUUCAGAUCG'
-if RNA == EXP_OP:
-	print('Test works')
+assert RNA == EXP_OP, "Template strand case doesn't work"
 
 #test case 3 (error check)
 DNA = 'ATgagtca shatcgagtcagtacg'
@@ -38,4 +38,6 @@ try:
 	RNA = transcription(DNA)
 except ValueError:
 	print("Error check works")
+
+print("All test cases cleared")
 """
