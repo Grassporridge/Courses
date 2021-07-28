@@ -1,5 +1,7 @@
 # Translation mRNA -> protein code
-# Accepts frame (-ve frames for reverse complement strand) and custom codon tables 
+# Accepts frame (-ve frames for reverse complement strand) 
+# and custom codon tables 
+# (str) -> (str)
 
 std_codon_table = {
 	'UUU':'F','UUC':'F',
@@ -53,15 +55,13 @@ def translation(seq, frame=1, codon_table=std_codon_table):
 RNA = 'uacguaca \nguucAGAucguga'
 EXP_OP = 'YVQFRS*'
 protein = translation(RNA)
-if protein == EXP_OP:
-	print('Test works')
+assert protein == EXP_OP, "Base case doesn't work"
 
 #test case 2
 RNA = 'aucgccuagcggggaaacgauaccaccc'
 EXP_OP = 'GGIVSPLGD'
 protein = translation(RNA,frame=-2)
-if protein == EXP_OP:
-	print('Test works')
+assert protein == EXP_OP, "Reverse frames don't work"
 
 #test case 3 (error check)
 RNA = 'atagcatgcatgactgac'
@@ -69,4 +69,6 @@ try:
 	protein = translation(RNA)
 except ValueError:
 	print("Error check works")
+
+print("All test cases cleared")
 """
